@@ -184,9 +184,9 @@ export default class App extends React.PureComponent {
             <section className="col-lg-4">
               <h2 className="lead">How this works:</h2>
               <ol>
-                <li>You can set Hue per row</li>
-                <li>Adjust Lightness per column</li>
-                <li>Change saturation across all colors</li>
+                <li>You adjust the base color per row</li>
+                <li>Change lightness per column</li>
+                <li>Set color intensity across all colors using the saturation slider</li>
                 <li>Export your colors in SASS, JSON or CSS</li>
               </ol>
               {/* <p className="fa-2x text-center">
@@ -194,8 +194,11 @@ export default class App extends React.PureComponent {
                 <i class="fab fa-sass" />
               </p> */}
               <p className="text-justify">
-                This app is built using React. All sliders used in this are
-                available on npm as <var>react-color-sliders</var>.
+                This app is built using React. Source code is available on{' '}
+                <a href="https://github.com/Hermanya/palette/tree/master/example">GitHub</a>{'. '}
+                All sliders used on this page are published on npm as {' '}
+                <var>react-color-sliders</var>,{' '}
+                <a href="https://github.com/Hermanya/palette/blob/master/README.md">see documentation</a>.
               </p>
               <div className="d-flex align-items-center mb-2">
                 MIT ©
@@ -213,6 +216,9 @@ export default class App extends React.PureComponent {
                     className="fab fa-twitter ml-2"
                     style={{ color: 'rgb(75,	160,	235	)' }}
                   />
+                </a>
+                <a href="https://github.com/hermanya">
+                  <i className="fab fa-github ml-2" style={{color: 'black'}}/>
                 </a>
               </div>
               <Code
