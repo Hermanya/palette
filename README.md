@@ -29,6 +29,8 @@ class Example extends React.Component {
       <React.Fragment>
 
         {/* Rainbow slider example */}
+        {/* to control the slider provide onChange/onUpdate */}
+        {/* more info on props: https://sghall.github.io/react-compound-slider/#/getting-started/tutorial */}
         <HueSlider hue={number} saturation={number} lightness={number}
           onChange={(hue: number) => {}} />
 

@@ -31,7 +31,7 @@ class Hue extends React.PureComponent {
           hue={palette[color].hue}
           saturation={saturation}
           lightness={lightness}
-          onChange={this.setValue}
+          onUpdate={this.setValue}
         />
       </div>
     );
@@ -62,7 +62,7 @@ class Lightness extends React.PureComponent {
             saturation={saturation}
             hue={0}
             lightness={lightness}
-            onChange={this.setValue}
+            onUpdate={this.setValue}
           />
         </div>
 
@@ -149,7 +149,7 @@ export default class App extends React.PureComponent {
                   hue={0}
                   saturation={this.state.saturation}
                   lightness={50}
-                  onChange={this.setSaturation}
+                  onUpdate={this.setSaturation}
                 />
               </section>
 

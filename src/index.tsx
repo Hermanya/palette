@@ -6,17 +6,25 @@ interface HSLProps {
   saturation: number;
   lightness: number;
   onChange(value: number): void;
+  onUpdate(value: number): void;
   domain: number[];
 }
 
 class HslSlider extends React.Component<HSLProps> {
   onChange = ([value]: number[]) => {
-    this.props.onChange(value);
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+  };
+  onUpdate = ([value]: number[]) => {
+    if (this.props.onUpdate) {
+      this.props.onUpdate(value);
+    }
   };
   value = () => this.props.domain[0];
   background = () => 'black';
   public render() {
-    const { domain, onChange, ...otherProps } = this.props;
+    const { domain, onChange, onUpdate, ...otherProps } = this.props;
     return (
       <Slider
         mode={1}
@@ -24,6 +32,7 @@ class HslSlider extends React.Component<HSLProps> {
         domain={domain}
         rootStyle={{ position: 'relative' }}
         onChange={this.onChange}
+        onUpdate={this.onUpdate}
         values={[this.value()]}
         {...otherProps}
       >
@@ -84,7 +93,14 @@ export class RedHueSlider extends HueSlider {
       ? this.props.hue - 360
       : this.props.hue;
   onChange = ([value]: number[]) => {
-    this.props.onChange(value < 0 ? 360 + value : value);
+    if (this.props.onChange) {
+      this.props.onChange(value < 0 ? 360 + value : value);
+    }
+  };
+  onUpdate = ([value]: number[]) => {
+    if (this.props.onUpdate) {
+      this.props.onUpdate(value < 0 ? 360 + value : value);
+    }
   };
 }
 
