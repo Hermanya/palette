@@ -15,12 +15,41 @@ npm install --save react-color-sliders
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'react-color-sliders'
+import {
+  HueSlider,
+  SaturationSlider,
+  LightnessSlider,
+  RedHueSlider,
+  ShadeLightnessSlider,
+} from 'react-color-sliders'
 
 class Example extends React.Component {
   render () {
     return (
-      <MyComponent />
+      <React.Fragment>
+
+        {/* Rainbow slider example */}
+        <HueSlider hue={number} saturation={number} lightness={number}
+          onChange={(hue: number) => {}} />
+
+        {/* This has a smaller domain of redish colors */}
+        {/* works for any other rainbow color */}
+        <RedHueSlider hue={number} saturation={number} lightness={number}
+          onChange={(hue: number) => {}} />
+
+
+        <SaturationSlider hue={number} saturation={number} lightness={number}
+          onChange={(saturation: number) => {}} />
+
+        <LightnessSlider hue={number} saturation={number} lightness={number}
+          onChange={(lightness: number) => {}} />
+
+        {/* Smaller domain of lightness for colors on the darker side */}
+        {/* works for tints and tones too */}
+        <ShadeLightnessSlider hue={number} saturation={number} lightness={number}
+          onChange={(lightness: number) => {}} />
+
+      </React.Fragment>
     )
   }
 }
