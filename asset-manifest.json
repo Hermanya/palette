@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-color-sliders/static/css/main.d034a1c4.chunk.css",
-  "main.js": "/react-color-sliders/static/js/main.23c1f84f.chunk.js",
-  "main.js.map": "/react-color-sliders/static/js/main.23c1f84f.chunk.js.map",
-  "static/js/1.7b31b949.chunk.js": "/react-color-sliders/static/js/1.7b31b949.chunk.js",
-  "static/js/1.7b31b949.chunk.js.map": "/react-color-sliders/static/js/1.7b31b949.chunk.js.map",
-  "runtime~main.js": "/react-color-sliders/static/js/runtime~main.3e114dd8.js",
-  "runtime~main.js.map": "/react-color-sliders/static/js/runtime~main.3e114dd8.js.map",
-  "static/css/main.d034a1c4.chunk.css.map": "/react-color-sliders/static/css/main.d034a1c4.chunk.css.map",
-  "index.html": "/react-color-sliders/index.html",
-  "precache-manifest.aa55249ff65c8c99fd5798029fe604e7.js": "/react-color-sliders/precache-manifest.aa55249ff65c8c99fd5798029fe604e7.js",
-  "service-worker.js": "/react-color-sliders/service-worker.js"
+  "main.css": "/palette/static/css/main.d034a1c4.chunk.css",
+  "main.js": "/palette/static/js/main.23c1f84f.chunk.js",
+  "main.js.map": "/palette/static/js/main.23c1f84f.chunk.js.map",
+  "static/js/1.7b31b949.chunk.js": "/palette/static/js/1.7b31b949.chunk.js",
+  "static/js/1.7b31b949.chunk.js.map": "/palette/static/js/1.7b31b949.chunk.js.map",
+  "runtime~main.js": "/palette/static/js/runtime~main.5f289afc.js",
+  "runtime~main.js.map": "/palette/static/js/runtime~main.5f289afc.js.map",
+  "static/css/main.d034a1c4.chunk.css.map": "/palette/static/css/main.d034a1c4.chunk.css.map",
+  "index.html": "/palette/index.html",
+  "precache-manifest.b8fd4fb80bdb85b40988c068d0bdde3b.js": "/palette/precache-manifest.b8fd4fb80bdb85b40988c068d0bdde3b.js",
+  "service-worker.js": "/palette/service-worker.js"
 }
