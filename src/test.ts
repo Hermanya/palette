@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import { HueSlider } from './';
 
-describe('ExampleComponent', () => {
+describe('HueSlider', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+    expect(HueSlider).toBeTruthy();
+  });
+});

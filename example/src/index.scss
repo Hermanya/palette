@@ -1,0 +1,81 @@
+// body {
+//   margin: 0;
+//   padding: 0;
+//   font-family: sans-serif;
+// }
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+@for $i from 1 through 4 {
+  .z-index-#{$i} {
+    z-index: $i;
+  }
+}
+$red: hsl(348, 100%, 50%);
+$orange: hsl(30, 100%, 50%);
+$yellow: hsl(55, 100%, 50%);
+$green: hsl(134, 100%, 50%);
+$cyan: hsl(187, 100%, 50%);
+$blue: hsl(237, 100%, 50%);
+$dark-blue: hsl(237, 100%, 25%);
+
+$grid-columns: 12;
+
+// Functions, variables, and mixins must come first.
+//
+// - Variables and mixins are dependant on functions
+// - In order to override Sass's default variables, those default variables must
+//   come first
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+$body-bg: $gray-200;
+
+// @import "~bootstrap/scss/root";
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+// @import "~bootstrap/scss/images";
+@import '~bootstrap/scss/code';
+@import '~bootstrap/scss/grid';
+// @import "~bootstrap/scss/tables";
+// @import "~bootstrap/scss/forms";
+@import '~bootstrap/scss/buttons';
+// @import "~bootstrap/scss/transitions";
+// @import "~bootstrap/scss/dropdown";
+@import '~bootstrap/scss/button-group';
+// @import "~bootstrap/scss/input-group";
+// @import "~bootstrap/scss/custom-forms";
+// @import "~bootstrap/scss/nav";
+// @import "~bootstrap/scss/navbar";
+// @import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+// @import "~bootstrap/scss/badge";
+// @import "~bootstrap/scss/jumbotron";
+// @import "~bootstrap/scss/alert";
+// @import "~bootstrap/scss/progress";
+// @import "~bootstrap/scss/media";
+// @import "~bootstrap/scss/list-group";
+// @import "~bootstrap/scss/close";
+// @import "~bootstrap/scss/modal";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import '~bootstrap/scss/utilities';
+// @import "~bootstrap/scss/print";
+
+html {
+  background-color: $gray-200;
+}
+
+@media (min-width: 768px) {
+  body {
+    // max-width: 48rem;
+    // margin-right: auto;
+    // margin-left: auto;
+    // background-color: transparent;
+  }
+}
