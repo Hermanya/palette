@@ -8,6 +8,7 @@ interface HSLProps {
   onChange(value: number): void;
   onUpdate(value: number): void;
   domain: number[];
+  name: string;
 }
 
 class HslSlider extends React.Component<HSLProps> {
@@ -24,7 +25,7 @@ class HslSlider extends React.Component<HSLProps> {
   value = () => this.props.domain[0];
   background = () => 'black';
   public render() {
-    const { domain, onChange, onUpdate, ...otherProps } = this.props;
+    const { domain, onChange, onUpdate, name, ...otherProps } = this.props;
     return (
       <Slider
         mode={1}
@@ -47,6 +48,7 @@ class HslSlider extends React.Component<HSLProps> {
               {handles.map(handle => (
                 <Handle
                   divOrButton="button"
+                  name={name}
                   key={handle.id}
                   handle={handle}
                   domain={domain}

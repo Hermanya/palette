@@ -32,6 +32,7 @@ class Hue extends React.PureComponent {
           saturation={saturation}
           lightness={lightness}
           onUpdate={this.setValue}
+          name={color}
         />
       </div>
     );
@@ -59,6 +60,7 @@ class Lightness extends React.PureComponent {
         <div className={'mb-4'}>
           <Label>{kind}</Label>
           <Slider
+            name={kind}
             saturation={saturation}
             hue={0}
             lightness={lightness}
@@ -147,6 +149,7 @@ export default class App extends React.PureComponent {
                 <Label>Saturation</Label>
                 <ColorSliders.SaturationSlider
                   hue={0}
+                  name={'saturation'}
                   saturation={this.state.saturation}
                   lightness={50}
                   onUpdate={this.setSaturation}
@@ -189,10 +192,6 @@ export default class App extends React.PureComponent {
                 <li>Set color intensity across all colors using the saturation slider</li>
                 <li>Export your colors in SASS, JSON or CSS</li>
               </ol>
-              {/* <p className="fa-2x text-center">
-                <i class="fab fa-js" /> <i class="fab fa-css3" />{' '}
-                <i class="fab fa-sass" />
-              </p> */}
               <p className="text-justify">
                 This app is built using React. Source code is available on{' '}
                 <a href="https://github.com/Hermanya/palette/tree/master/example">GitHub</a>{'. '}
@@ -216,9 +215,11 @@ export default class App extends React.PureComponent {
                     className="fab fa-twitter ml-2"
                     style={{ color: 'rgb(75,	160,	235	)' }}
                   />
+                  <span className="sr-only">Link to Herman's twitter profile</span>
                 </a>
                 <a href="https://github.com/hermanya">
                   <i className="fab fa-github ml-2" style={{color: 'black'}}/>
+                  <span className="sr-only">Link to Herman's github profile</span>
                 </a>
               </div>
               <Code
@@ -231,7 +232,7 @@ export default class App extends React.PureComponent {
           </section>
         </div>
         <i
-          className="fas fa-palette position-absolute text-white z-index-1"
+          className="fas fa-palette position-absolute text-light z-index-1"
           style={{
             top: '-5vw',
             right: '-5vw',
@@ -240,7 +241,7 @@ export default class App extends React.PureComponent {
           }}
         />
         <i
-          className="fas fa-swatchbook position-absolute text-white z-index-1"
+          className="fas fa-swatchbook position-absolute text-light z-index-1"
           style={{
             transform: 'rotate(90deg)',
             top: '1vw',

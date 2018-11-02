@@ -3,6 +3,7 @@ import { SliderItem, GetHandleProps } from 'react-compound-slider';
 
 interface IHandleProps {
   divOrButton: string;
+  name: string;
   domain: number[];
   handle: SliderItem;
   getHandleProps: GetHandleProps;
@@ -14,6 +15,7 @@ export const Handle: React.SFC<IHandleProps> = ({
   divOrButton: Comp,
   domain: [min, max],
   handle: { id, value, percent },
+  name,
   getHandleProps
 }) => (
   <Comp
@@ -21,6 +23,8 @@ export const Handle: React.SFC<IHandleProps> = ({
     aria-valuemin={min}
     aria-valuemax={max}
     aria-valuenow={value}
+    name={name}
+    title={name}
     style={{
       left: `${percent}%`,
       position: 'absolute',
@@ -33,7 +37,7 @@ export const Handle: React.SFC<IHandleProps> = ({
       borderRadius: '50%',
       border: 'none',
       boxShadow: '0 4px 8px rgba(0,0,0,.16)',
-      backgroundColor: 'white'
+      backgroundColor: '#f8f9fa'
     }}
     {...getHandleProps(id)}
   />
