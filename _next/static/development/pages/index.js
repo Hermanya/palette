@@ -1459,8 +1459,8 @@ Slider.Handles = Handles;
 
 var size = 30;
 var Handle = function (_a) {
-    var Comp = _a.divOrButton, _b = _a.domain, min = _b[0], max = _b[1], _c = _a.handle, id = _c.id, value = _c.value, percent = _c.percent, getHandleProps = _a.getHandleProps;
-    return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Comp, __assign({ role: "slider", "aria-valuemin": min, "aria-valuemax": max, "aria-valuenow": value, style: {
+    var Comp = _a.divOrButton, _b = _a.domain, min = _b[0], max = _b[1], _c = _a.handle, id = _c.id, value = _c.value, percent = _c.percent, name = _a.name, getHandleProps = _a.getHandleProps;
+    return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Comp, __assign({ role: "slider", "aria-valuemin": min, "aria-valuemax": max, "aria-valuenow": value, name: name, title: name, style: {
             left: percent + "%",
             position: 'absolute',
             transform: 'translate3d(-50%,-50%,0)',
@@ -1472,7 +1472,7 @@ var Handle = function (_a) {
             borderRadius: '50%',
             border: 'none',
             boxShadow: '0 4px 8px rgba(0,0,0,.16)',
-            backgroundColor: 'white'
+            backgroundColor: '#f8f9fa'
         } }, getHandleProps(id))));
 };
 var MyRail = function (_a) {
@@ -1485,6 +1485,7 @@ var MyRail = function (_a) {
             boxShadow: 'inset 0 1px 3px rgba(0,0,0,.4)'
         } }, props)));
 };
+//# sourceMappingURL=components.js.map
 
 var HslSlider = /** @class */ (function (_super) {
     __extends(HslSlider, _super);
@@ -1508,7 +1509,7 @@ var HslSlider = /** @class */ (function (_super) {
     }
     HslSlider.prototype.render = function () {
         var _this = this;
-        var _a = this.props, domain = _a.domain, onChange = _a.onChange, onUpdate = _a.onUpdate, otherProps = __rest(_a, ["domain", "onChange", "onUpdate"]);
+        var _a = this.props, domain = _a.domain, onChange = _a.onChange, onUpdate = _a.onUpdate, name = _a.name, otherProps = __rest(_a, ["domain", "onChange", "onUpdate", "name"]);
         return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Slider, __assign({ mode: 1, step: 1, domain: domain, rootStyle: { position: 'relative' }, onChange: this.onChange, onUpdate: this.onUpdate, values: [this.value()] }, otherProps),
             Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rail, null, function (_a) {
                 var getRailProps = _a.getRailProps;
@@ -1516,7 +1517,7 @@ var HslSlider = /** @class */ (function (_super) {
             }),
             Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Handles, null, function (_a) {
                 var handles = _a.handles, getHandleProps = _a.getHandleProps;
-                return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, handles.map(function (handle) { return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Handle, { divOrButton: "button", key: handle.id, handle: handle, domain: domain, getHandleProps: getHandleProps })); })));
+                return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, handles.map(function (handle) { return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Handle, { divOrButton: "button", name: name, key: handle.id, handle: handle, domain: domain, getHandleProps: getHandleProps })); })));
             })));
     };
     return HslSlider;
@@ -4499,6 +4500,7 @@ function (_React$PureComponent2) {
         },
         __self: this
       }, kind), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Slider, {
+        name: kind,
         saturation: saturation,
         hue: 0,
         lightness: lightness,
@@ -4514,7 +4516,7 @@ function (_React$PureComponent2) {
           className: " mb-4",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 71
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4525,7 +4527,7 @@ function (_React$PureComponent2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 71
+            lineNumber: 72
           },
           __self: this
         }));
@@ -4629,64 +4631,65 @@ function (_React$PureComponent3) {
         className: "position-relative overflow-x-hidden ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 140
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "py-5 container position-relative z-index-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 141
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "display-4 mb-4 text-center  ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 142
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 143
         },
         __self: this
       }, "Make a color palette"), " in an intuitive way"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "row mb-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144
+          lineNumber: 145
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: columnClass,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145
+          lineNumber: 146
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: '',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146
+          lineNumber: 147
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147
+          lineNumber: 148
         },
         __self: this
       }, "Saturation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_color_sliders__WEBPACK_IMPORTED_MODULE_1__["SaturationSlider"], {
         hue: 0,
+        name: 'saturation',
         saturation: this.state.saturation,
         lightness: 50,
         onUpdate: this.setSaturation,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 149
         },
         __self: this
       })), Object.keys(this.state.palette).map(function (color) {
@@ -4696,6 +4699,7 @@ function (_React$PureComponent3) {
             marginBottom: 42
           },
           key: color,
+          name: color,
           palette: _this4.state.palette,
           color: color,
           lightness: _this4.state.tone.lightness,
@@ -4704,7 +4708,7 @@ function (_React$PureComponent3) {
           hsl: _this4.hsl,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 160
           },
           __self: this
         });
@@ -4720,7 +4724,7 @@ function (_React$PureComponent3) {
           className: columnClass,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 173
+            lineNumber: 176
           },
           __self: this
         });
@@ -4728,78 +4732,78 @@ function (_React$PureComponent3) {
         className: "col-lg-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184
+          lineNumber: 187
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "lead",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 185
+          lineNumber: 188
         },
         __self: this
       }, "How this works:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 186
+          lineNumber: 189
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 187
+          lineNumber: 190
         },
         __self: this
       }, "You adjust the base color per row"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 188
+          lineNumber: 191
         },
         __self: this
       }, "Change lightness per column"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 189
+          lineNumber: 192
         },
         __self: this
       }, "Set color intensity across all colors using the saturation slider"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 190
+          lineNumber: 193
         },
         __self: this
       }, "Export your colors in SASS, JSON or CSS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "text-justify",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 196
+          lineNumber: 195
         },
         __self: this
       }, "This app is built using React. Source code is available on", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/Hermanya/palette/tree/master/example",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 198
+          lineNumber: 197
         },
         __self: this
       }, "GitHub"), '. ', "All sliders used on this page are published on npm as ", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("var", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 200
+          lineNumber: 199
         },
         __self: this
       }, "react-color-sliders"), ",", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/Hermanya/palette/blob/master/README.md",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201
+          lineNumber: 200
         },
         __self: this
       }, "see documentation"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex align-items-center mb-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 203
+          lineNumber: 202
         },
         __self: this
       }, "MIT \xA9", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -4807,7 +4811,7 @@ function (_React$PureComponent3) {
         className: "ml-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205
+          lineNumber: 204
         },
         __self: this
       }, "Herman Starikov"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -4820,14 +4824,14 @@ function (_React$PureComponent3) {
         src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1589206/profile/profile-512.jpg",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208
+          lineNumber: 207
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://twitter.com/hermanhasawish",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 214
+          lineNumber: 213
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -4837,10 +4841,17 @@ function (_React$PureComponent3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 215
+          lineNumber: 214
         },
         __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sr-only",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 218
+        },
+        __self: this
+      }, "Link to Herman's twitter profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/hermanya",
         __source: {
           fileName: _jsxFileName,
@@ -4857,18 +4868,25 @@ function (_React$PureComponent3) {
           lineNumber: 221
         },
         __self: this
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Code__WEBPACK_IMPORTED_MODULE_2__["Code"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sr-only",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 222
+        },
+        __self: this
+      }, "Link to Herman's github profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Code__WEBPACK_IMPORTED_MODULE_2__["Code"], {
         exportType: this.state.exportType,
         palette: this.state.palette,
         setExportType: this.setExportType,
         hsl: this.hsl,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 224
+          lineNumber: 225
         },
         __self: this
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-palette position-absolute text-white z-index-1",
+        className: "fas fa-palette position-absolute text-light z-index-1",
         style: {
           top: '-5vw',
           right: '-5vw',
@@ -4877,11 +4895,11 @@ function (_React$PureComponent3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 233
+          lineNumber: 234
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-swatchbook position-absolute text-white z-index-1",
+        className: "fas fa-swatchbook position-absolute text-light z-index-1",
         style: {
           transform: 'rotate(90deg)',
           top: '1vw',
@@ -4890,7 +4908,7 @@ function (_React$PureComponent3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242
+          lineNumber: 243
         },
         __self: this
       }));
@@ -10946,62 +10964,23 @@ var _jsxFileName = "/Users/herman/my/react-color-sliders/example/pages/index.js"
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
-    charSet: "utf-8",
+    name: "Description",
+    content: "Make a color palette in an intuitive way",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
-    name: "viewport",
-    content: "width=device-width, initial-scale=1, shrink-to-fit=no",
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
-    name: "theme-color",
-    content: "#000000",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
-    name: "Description",
-    content: "Make a color palette in an intuitive way",
+  }, "Make a color palette")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
-  }, "Make a color palette"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
-    rel: "stylesheet",
-    href: "https://use.fontawesome.com/releases/v5.3.1/css/all.css",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
-    rel: "stylesheet",
-    href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
     },
     __self: this
   }));
