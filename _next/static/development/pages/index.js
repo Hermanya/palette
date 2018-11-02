@@ -4426,6 +4426,7 @@ function (_React$PureComponent) {
         saturation: saturation,
         lightness: lightness,
         onUpdate: this.setValue,
+        name: color,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 30
@@ -4483,20 +4484,20 @@ function (_React$PureComponent2) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({}, props, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 59
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'mb-4',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 60
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 61
         },
         __self: this
       }, kind), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Slider, {
@@ -4507,7 +4508,7 @@ function (_React$PureComponent2) {
         onUpdate: this.setValue,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 62
         },
         __self: this
       })), Object.keys(palette).map(function (color) {
@@ -4516,7 +4517,7 @@ function (_React$PureComponent2) {
           className: " mb-4",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 71
+            lineNumber: 72
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4527,7 +4528,7 @@ function (_React$PureComponent2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 73
           },
           __self: this
         }));
@@ -4631,54 +4632,54 @@ function (_React$PureComponent3) {
         className: "position-relative overflow-x-hidden ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 141
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "py-5 container position-relative z-index-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 142
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "display-4 mb-4 text-center  ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 143
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143
+          lineNumber: 144
         },
         __self: this
       }, "Make a color palette"), " in an intuitive way"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "row mb-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145
+          lineNumber: 146
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: columnClass,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146
+          lineNumber: 147
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: '',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147
+          lineNumber: 148
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 149
         },
         __self: this
       }, "Saturation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_color_sliders__WEBPACK_IMPORTED_MODULE_1__["SaturationSlider"], {
@@ -4689,7 +4690,7 @@ function (_React$PureComponent3) {
         onUpdate: this.setSaturation,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 150
         },
         __self: this
       })), Object.keys(this.state.palette).map(function (color) {
@@ -4699,7 +4700,6 @@ function (_React$PureComponent3) {
             marginBottom: 42
           },
           key: color,
-          name: color,
           palette: _this4.state.palette,
           color: color,
           lightness: _this4.state.tone.lightness,
@@ -4708,7 +4708,7 @@ function (_React$PureComponent3) {
           hsl: _this4.hsl,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 160
+            lineNumber: 161
           },
           __self: this
         });
