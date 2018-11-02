@@ -39,7 +39,7 @@ class Hue extends React.PureComponent {
   setValue = value => this.props.setPalette(this.props.color, { hue: value });
 }
 
-const columnClass = 'col-lg-2 col-md-3 col-sm-6';
+const columnClass = 'col-lg-2 col-md-3 col-6';
 
 class Lightness extends React.PureComponent {
   render() {
