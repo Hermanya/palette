@@ -13,6 +13,8 @@ const Page = () => (
       <title>Make a color palette</title>
     </Head>
     <App
+      libraryName={"Basic"}
+      libraryColor={"black"}
       initialState={{
         hues: [
           { name: "red", value: 348 },
@@ -28,9 +30,45 @@ const Page = () => (
           { name: "tone", value: 50 },
           { name: "tint", value: 75 }
         ],
-        saturation: 100,
-        exportType: "css"
+        saturation: 100
       }}
+      exportTypes={[
+        {
+          name: "CSS",
+          toString: ({ hues, lightnesses, saturation, hsl }) =>
+            `:root {\n${hues
+              .map(hue =>
+                lightnesses
+                  .map(
+                    lightness =>
+                      `  --${hue.name}_${lightness.name}: ${hsl(
+                        hue.name,
+                        lightness.name
+                      )};`
+                  )
+                  .join("\n")
+              )
+              .join("\n")}\n}`
+        },
+        {
+          name: "JSON",
+          toString: ({ hues, lightnesses, saturation, hsl }) =>
+            `{\n${hues
+              .map(hue =>
+                lightnesses
+                  .map(
+                    lightness =>
+                      `  "${hue.name}_${lightness.name}": "${hsl(
+                        hue.name,
+                        lightness.name
+                      )}"`
+                  )
+                  .join(",\n")
+              )
+              .join(",\n")}\n}`
+        }
+      ]}
+      columnClass={"col-lg-2 col-md-3 col-6"}
     />
   </React.Fragment>
 );

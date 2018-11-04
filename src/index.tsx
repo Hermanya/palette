@@ -114,7 +114,7 @@ export class OrangeHueSlider extends HueSlider {
 
 export class YellowHueSlider extends HueSlider {
   static defaultProps: any = {
-    domain: [45, 75]
+    domain: [35, 75]
   };
 }
 
@@ -130,14 +130,38 @@ export class CyanHueSlider extends HueSlider {
   };
 }
 
+export class TealHueSlider extends HueSlider {
+  static defaultProps: any = {
+    domain: [140, 180]
+  };
+}
+
 export class BlueHueSlider extends HueSlider {
   static defaultProps: any = {
-    domain: [200, 280]
+    domain: [180, 270]
+  };
+}
+
+export class IndigoHueSlider extends HueSlider {
+  static defaultProps: any = {
+    domain: [220, 280]
   };
 }
 export class MagentaHueSlider extends HueSlider {
   static defaultProps: any = {
     domain: [260, 330]
+  };
+}
+
+export class PurpleHueSlider extends HueSlider {
+  static defaultProps: any = {
+    domain: [250, 300]
+  };
+}
+
+export class PinkHueSlider extends HueSlider {
+  static defaultProps: any = {
+    domain: [310, 350]
   };
 }
 

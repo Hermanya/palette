@@ -1,65 +1,41 @@
 import React from "react";
-import { exportTypes } from "./consts";
 export const Code = ({
-  exportType,
   hues,
+  lightnesses,
+  saturation,
+  exportTypes,
+  exportType,
   setExportType,
   className,
-  lightnesses,
   hsl,
   ...props
 }) => (
   <pre
-    className={`bg-dark text-white p-3 rounded shadow ${className}`}
+    className={`bg-dark text-white p-3 rounded shadow small ${className}`}
     {...props}
   >
     <div className="btn-group" role="group" aria-label="Basic example">
       {exportTypes.map(type => (
         <button
-          key={type}
+          key={type.name}
           type="button"
-          onClick={() => setExportType(type)}
+          onClick={() => setExportType(type.name)}
           className={`btn btn-sm btn-outline-light ${
-            exportType === type ? "bg-light text-dark" : ""
+            exportType === type.name ? "bg-light text-dark" : ""
           }`}
         >
-          {type.toUpperCase()}
+          {type.name.toUpperCase()}
         </button>
       ))}
     </div>
     {"\n\n"}
     <code>
-      {exportType === "json"
-        ? `{\n${hues
-            .map(hue =>
-              lightnesses
-                .map(
-                  lightness =>
-                    `  "${hue.name}_${lightness.name}": "${hsl(
-                      hue.name,
-                      lightness.name
-                    )}"`
-                )
-                .join(",\n")
-            )
-            .join(",\n")}\n}`
-        : exportType === "sass"
-          ? hues
-              .map(hue => `$${hue.name}: ${hsl(hue.name, "tone")};`)
-              .join("\n")
-          : `:root {\n${hues
-              .map(hue =>
-                lightnesses
-                  .map(
-                    lightness =>
-                      `  --${hue.name}_${lightness.name}: ${hsl(
-                        hue.name,
-                        lightness.name
-                      )};`
-                  )
-                  .join("\n")
-              )
-              .join("\n")}\n}`}
+      {(exportType || exportTypes[0]).toString({
+        hues,
+        lightnesses,
+        saturation,
+        hsl
+      })}
     </code>
   </pre>
 );

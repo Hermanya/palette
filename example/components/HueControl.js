@@ -5,7 +5,8 @@ export class HueControl extends React.PureComponent {
   render() {
     const { name, hue, saturation, lightness, setHue, ...props } = this.props;
     let Slider =
-      ColorSliders[`${name[0].toUpperCase()}${name.slice(1)}HueSlider`];
+      ColorSliders[`${name[0].toUpperCase()}${name.slice(1)}HueSlider`] ||
+      ColorSliders.HueSlider;
     return (
       <div {...props}>
         <Slider

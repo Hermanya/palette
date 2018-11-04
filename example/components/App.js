@@ -4,13 +4,13 @@ import { Code } from "./Code";
 import { LightnessControl } from "./LightnessControl";
 import { HueControl } from "./HueControl";
 import { Label } from "./Label";
-
-const columnClass = "col-lg-2 col-md-3 col-6";
-
+import { Herman } from "./Herman";
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = props.initialState;
+    this.state = {
+      ...props.initialState
+    };
   }
   hsl = (hue, lightness) => {
     return `hsl(${this.state.hues.find(_ => _.name === hue).value}, ${
@@ -22,16 +22,16 @@ export default class App extends React.PureComponent {
       hues: this.state.hues.map(_ => (_.name === name ? { ..._, value } : _))
     });
   };
-  setLightness = (level, value) => {
+  setLightness = (name, value) => {
     this.setState({
       lightnesses: this.state.lightnesses.map(
-        _ => (_.name === level ? { ..._, value } : _)
+        _ => (_.name === name ? { ..._, value } : _)
       )
     });
   };
-  setSaturation = value => {
+  setSaturation = saturation => {
     this.setState({
-      saturation: value
+      saturation
     });
   };
   setExportType = type => {
@@ -40,21 +40,33 @@ export default class App extends React.PureComponent {
     });
   };
   render() {
+    const { columnClass } = this.props;
     return (
       <div className="position-relative overflow-x-hidden ">
         <div className="py-5 container position-relative z-index-2">
-          <h1 className="display-4 mb-4 text-center  ">
-            <strong>Make a color palette</strong> in an intuitive way
+          <h1 className="display-4 mb-4 text-center">
+            <strong>
+              Make a{" "}
+              <span style={{ color: this.props.libraryColor }}>
+                {this.props.libraryName}
+              </span>{" "}
+              color palette
+            </strong>{" "}
+            for your theme
           </h1>
           <section className="row mb-4">
             <div className={columnClass}>
               <section className={""}>
                 <Label>Saturation</Label>
                 <ColorSliders.SaturationSlider
-                  hue={0}
+                  hue={this.state.hues[0].value}
                   name={"saturation"}
                   saturation={this.state.saturation}
-                  lightness={50}
+                  lightness={
+                    this.state.lightnesses[
+                      Math.floor(this.state.lightnesses.length / 2)
+                    ].value
+                  }
                   onUpdate={this.setSaturation}
                 />
               </section>
@@ -66,10 +78,13 @@ export default class App extends React.PureComponent {
                       style={{ marginBottom: 42 }}
                       name={hue.name}
                       hue={hue.value}
-                      lightness={this.state.lightnesses[1].value}
+                      lightness={
+                        this.state.lightnesses[
+                          Math.floor(this.state.lightnesses.length / 2)
+                        ].value
+                      }
                       saturation={this.state.saturation}
                       setHue={this.setHue}
-                      hsl={this.hsl}
                     />
                   </div>
                 );
@@ -79,11 +94,10 @@ export default class App extends React.PureComponent {
               <div className={columnClass} key={lightness.name}>
                 <Label>{lightness.name}</Label>
                 <LightnessControl
-                  kind={lightness.name}
                   className={"mb-4"}
-                  lightness={lightness.value}
                   saturation={this.state.saturation}
                   setLightness={this.setLightness}
+                  {...lightness}
                 />
                 {this.state.hues.map(hue => (
                   <div key={hue.name + lightness.name} className={`${""} mb-4`}>
@@ -100,7 +114,7 @@ export default class App extends React.PureComponent {
                 ))}
               </div>
             ))}
-            <section className="col-lg-4">
+            <section className="col-lg-4 col-md-6">
               <h2 className="lead">How this works:</h2>
               <ol>
                 <li>You adjust the base color per row</li>
@@ -109,7 +123,10 @@ export default class App extends React.PureComponent {
                   Set color intensity across all colors using the saturation
                   slider
                 </li>
-                <li>Export your colors in SASS, JSON or CSS</li>
+                <li>
+                  Export your colors in{" "}
+                  {this.props.exportTypes.map(_ => _.name).join(", ")}
+                </li>
               </ol>
               <p className="text-justify">
                 This app is built using React. Source code is available on{" "}
@@ -124,39 +141,17 @@ export default class App extends React.PureComponent {
                 </a>
                 .
               </p>
-              <div className="d-flex align-items-center mb-2">
-                MIT ©
-                <a href="https://hermanya.github.io" className="ml-1">
-                  Herman Starikov
-                </a>
-                <img
-                  style={{ width: 32, height: 32 }}
-                  className="d-inline-block ml-2 rounded shadow-sm"
-                  alt="Herman Starikov"
-                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1589206/profile/profile-512.jpg"
-                />
-                <a href="https://twitter.com/hermanhasawish">
-                  <i
-                    className="fab fa-twitter ml-2"
-                    style={{ color: "rgb(75,	160,	235	)" }}
-                  />
-                  <span className="sr-only">
-                    Link to Hermans twitter profile
-                  </span>
-                </a>
-                <a href="https://github.com/hermanya">
-                  <i
-                    className="fab fa-github ml-2"
-                    style={{ color: "black" }}
-                  />
-                  <span className="sr-only">
-                    Link to Hermans github profile
-                  </span>
-                </a>
-              </div>
+              <h2 className="lead">Need a palette for another library?</h2>
+              <ul>
+                <li>Bootstrap</li>
+              </ul>
+
+              <Herman className="mb-4" />
               <Code
                 lightnesses={this.state.lightnesses}
                 hues={this.state.hues}
+                saturation={this.state.saturation}
+                exportTypes={this.props.exportTypes}
                 exportType={this.state.exportType}
                 setExportType={this.setExportType}
                 hsl={this.hsl}

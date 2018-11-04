@@ -3,20 +3,29 @@ import * as ColorSliders from "react-color-sliders";
 
 export class LightnessControl extends React.PureComponent {
   render() {
-    const { kind, saturation, lightness, setLightness, ...props } = this.props;
+    const {
+      name,
+      value,
+      saturation,
+      domain,
+      setLightness,
+      ...props
+    } = this.props;
     let Slider =
-      ColorSliders[`${kind[0].toUpperCase()}${kind.slice(1)}LightnessSlider`];
+      ColorSliders[`${name[0].toUpperCase()}${name.slice(1)}LightnessSlider`] ||
+      ColorSliders.LightnessSlider;
     return (
       <div {...props}>
         <Slider
-          name={kind}
+          name={name}
           saturation={saturation}
           hue={0}
-          lightness={lightness}
+          lightness={value}
           onUpdate={this.setValue}
+          domain={domain}
         />
       </div>
     );
   }
-  setValue = value => this.props.setLightness(this.props.kind, value);
+  setValue = value => this.props.setLightness(this.props.name, value);
 }
