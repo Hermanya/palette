@@ -114,7 +114,7 @@ export default class App extends React.PureComponent {
                 ))}
               </div>
             ))}
-            <section className="col-lg-4 col-md-6">
+            <section className="col-lg-4 col-md-6 col">
               <h2 className="lead">How this works:</h2>
               <ol>
                 <li>You adjust the base color per row</li>
@@ -141,10 +141,20 @@ export default class App extends React.PureComponent {
                 </a>
                 .
               </p>
-              <h2 className="lead">Need a palette for another library?</h2>
-              <ul>
-                <li>Bootstrap</li>
-              </ul>
+              <p className="text-justify">
+                In addition to {this.props.libraryName}, I also made similar
+                color tools for{" "}
+                {["Bootstrap", "Tailwind", "Material UI"]
+                  .filter(_ => _ !== this.props.libraryName)
+                  .map((lib, i, xs) => (
+                    <span key={lib}>
+                      <a href={`./${lib.toLowerCase().replace(/\s/g, "-")}`}>
+                        {lib}
+                      </a>
+                      {i !== xs.length - 1 ? " and " : "."}
+                    </span>
+                  ))}
+              </p>
 
               <Herman className="mb-4" />
               <Code

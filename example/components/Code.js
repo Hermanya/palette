@@ -7,11 +7,13 @@ export const Code = ({
   exportType,
   setExportType,
   className,
+  style,
   hsl,
   ...props
 }) => (
   <pre
     className={`bg-dark text-white p-3 rounded shadow small ${className}`}
+    style={{ maxHeight: "50vh", ...style }}
     {...props}
   >
     <div className="btn-group" role="group" aria-label="Basic example">
@@ -19,7 +21,7 @@ export const Code = ({
         <button
           key={type.name}
           type="button"
-          onClick={() => setExportType(type.name)}
+          onClick={() => setExportType(type)}
           className={`btn btn-sm btn-outline-light ${
             exportType === type.name ? "bg-light text-dark" : ""
           }`}
