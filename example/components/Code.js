@@ -1,10 +1,11 @@
 import React from 'react';
-import { lightnessLevels, exportTypes } from './consts';
+import { exportTypes } from './consts';
 export const Code = ({
   exportType,
   palette,
   setExportType,
   className,
+  lightnesses,
   hsl,
   ...props
 }) => (
@@ -31,8 +32,8 @@ export const Code = ({
       {exportType === 'json'
         ? `{\n${Object.keys(palette)
             .map(color =>
-              lightnessLevels
-                .map(kind => `  "${color}_${kind}": "${hsl(color, kind)}"`)
+              lightnesses
+                .map((lightness) => `  "${color}_${lightness.name}": "${hsl(color, lightness.name)}"`)
                 .join(',\n')
             )
             .join(',\n')}\n}`
@@ -42,8 +43,8 @@ export const Code = ({
               .join('\n')
           : `:root {\n${Object.keys(palette)
               .map(color =>
-                lightnessLevels
-                  .map(kind => `  --${color}_${kind}: ${hsl(color, kind)};`)
+                lightnesses
+                  .map(lightness => `  --${color}_${lightness.name}: ${hsl(color, lightness.name)};`)
                   .join('\n')
               )
               .join('\n')}\n}`}
