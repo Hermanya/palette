@@ -4616,7 +4616,7 @@ function (_React$PureComponent) {
           }));
         }));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "col-lg-4 col-md-6",
+        className: "col-lg-4 col-md-6 col",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 117
@@ -4688,30 +4688,36 @@ function (_React$PureComponent) {
           lineNumber: 139
         },
         __self: this
-      }, "see documentation"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "lead",
+      }, "see documentation"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-justify",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 144
         },
         __self: this
-      }, "Need a palette for another library?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 145
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 146
-        },
-        __self: this
-      }, "Bootstrap")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Herman__WEBPACK_IMPORTED_MODULE_6__["Herman"], {
+      }, "In addition to ", this.props.libraryName, ", I also made similar color tools for", " ", ["Bootstrap", "Tailwind", "Material UI"].filter(function (_) {
+        return _ !== _this2.props.libraryName;
+      }).map(function (lib, i, xs) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          key: lib,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 150
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "./".concat(lib.toLowerCase().replace(/\s/g, "-")),
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 151
+          },
+          __self: this
+        }, lib), i !== xs.length - 1 ? " and " : ".");
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Herman__WEBPACK_IMPORTED_MODULE_6__["Herman"], {
         className: "mb-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 159
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Code__WEBPACK_IMPORTED_MODULE_2__["Code"], {
@@ -4724,7 +4730,7 @@ function (_React$PureComponent) {
         hsl: this.hsl,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 150
+          lineNumber: 160
         },
         __self: this
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -4737,7 +4743,7 @@ function (_React$PureComponent) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 162
+          lineNumber: 172
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -4750,7 +4756,7 @@ function (_React$PureComponent) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171
+          lineNumber: 181
         },
         __self: this
       }));
@@ -4780,6 +4786,10 @@ var _jsxFileName = "/Users/herman/my/react-color-sliders/example/components/Code
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
@@ -4793,15 +4803,19 @@ var Code = function Code(_ref) {
       exportType = _ref.exportType,
       setExportType = _ref.setExportType,
       className = _ref.className,
+      style = _ref.style,
       hsl = _ref.hsl,
-      props = _objectWithoutProperties(_ref, ["hues", "lightnesses", "saturation", "exportTypes", "exportType", "setExportType", "className", "hsl"]);
+      props = _objectWithoutProperties(_ref, ["hues", "lightnesses", "saturation", "exportTypes", "exportType", "setExportType", "className", "style", "hsl"]);
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("pre", _extends({
-    className: "bg-dark text-white p-3 rounded shadow small ".concat(className)
+    className: "bg-dark text-white p-3 rounded shadow small ".concat(className),
+    style: _objectSpread({
+      maxHeight: "50vh"
+    }, style)
   }, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 14
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4810,7 +4824,7 @@ var Code = function Code(_ref) {
     "aria-label": "Basic example",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 19
     },
     __self: this
   }, exportTypes.map(function (type) {
@@ -4818,19 +4832,19 @@ var Code = function Code(_ref) {
       key: type.name,
       type: "button",
       onClick: function onClick() {
-        return setExportType(type.name);
+        return setExportType(type);
       },
       className: "btn btn-sm btn-outline-light ".concat(exportType === type.name ? "bg-light text-dark" : ""),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 21
       },
       __self: this
     }, type.name.toUpperCase());
   })), "\n\n", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     },
     __self: this
   }, (exportType || exportTypes[0]).toString({
