@@ -14,15 +14,15 @@ const Page = () => (
     </Head>
     <App
       initialState={{
-        palette: {
-          red: { hue: 348 },
-          orange: { hue: 30 },
-          yellow: { hue: 55 },
-          green: { hue: 134 },
-          cyan: { hue: 187 },
-          blue: { hue: 237 },
-          magenta: { hue: 295 }
-        },
+        hues: [
+          { name: "red", value: 348 },
+          { name: "orange", value: 30 },
+          { name: "yellow", value: 55 },
+          { name: "green", value: 134 },
+          { name: "cyan", value: 187 },
+          { name: "blue", value: 237 },
+          { name: "magenta", value: 295 }
+        ],
         lightnesses: [
           { name: "shade", value: 25 },
           { name: "tone", value: 50 },

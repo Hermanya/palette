@@ -1,8 +1,8 @@
-import React from 'react';
-import { exportTypes } from './consts';
+import React from "react";
+import { exportTypes } from "./consts";
 export const Code = ({
   exportType,
-  palette,
+  hues,
   setExportType,
   className,
   lightnesses,
@@ -20,34 +20,46 @@ export const Code = ({
           type="button"
           onClick={() => setExportType(type)}
           className={`btn btn-sm btn-outline-light ${
-            exportType === type ? 'bg-light text-dark' : ''
+            exportType === type ? "bg-light text-dark" : ""
           }`}
         >
           {type.toUpperCase()}
         </button>
       ))}
     </div>
-    {'\n\n'}
+    {"\n\n"}
     <code>
-      {exportType === 'json'
-        ? `{\n${Object.keys(palette)
-            .map(color =>
+      {exportType === "json"
+        ? `{\n${hues
+            .map(hue =>
               lightnesses
-                .map((lightness) => `  "${color}_${lightness.name}": "${hsl(color, lightness.name)}"`)
-                .join(',\n')
+                .map(
+                  lightness =>
+                    `  "${hue.name}_${lightness.name}": "${hsl(
+                      hue.name,
+                      lightness.name
+                    )}"`
+                )
+                .join(",\n")
             )
-            .join(',\n')}\n}`
-        : exportType === 'sass'
-          ? Object.keys(palette)
-              .map(color => `$${color}: ${hsl(color, 'tone')};`)
-              .join('\n')
-          : `:root {\n${Object.keys(palette)
-              .map(color =>
+            .join(",\n")}\n}`
+        : exportType === "sass"
+          ? hues
+              .map(hue => `$${hue.name}: ${hsl(hue.name, "tone")};`)
+              .join("\n")
+          : `:root {\n${hues
+              .map(hue =>
                 lightnesses
-                  .map(lightness => `  --${color}_${lightness.name}: ${hsl(color, lightness.name)};`)
-                  .join('\n')
+                  .map(
+                    lightness =>
+                      `  --${hue.name}_${lightness.name}: ${hsl(
+                        hue.name,
+                        lightness.name
+                      )};`
+                  )
+                  .join("\n")
               )
-              .join('\n')}\n}`}
+              .join("\n")}\n}`}
     </code>
   </pre>
 );

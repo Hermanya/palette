@@ -12,23 +12,20 @@ export default class App extends React.PureComponent {
     super(props);
     this.state = props.initialState;
   }
-  hsl = (color, kind) => {
-    return `hsl(${this.state.palette[color].hue}, ${this.state.saturation}%, ${
-      this.state.lightnesses.find(_ => _.name === kind).value
-    }%)`;
+  hsl = (hue, lightness) => {
+    return `hsl(${this.state.hues.find(_ => _.name === hue).value}, ${
+      this.state.saturation
+    }%, ${this.state.lightnesses.find(_ => _.name === lightness).value}%)`;
   };
-  setPalette = (color, value) => {
+  setHue = (name, value) => {
     this.setState({
-      palette: {
-        ...this.state.palette,
-        [color]: value
-      }
+      hues: this.state.hues.map(_ => (_.name === name ? { ..._, value } : _))
     });
   };
-  setLightness = (kind, value) => {
+  setLightness = (level, value) => {
     this.setState({
       lightnesses: this.state.lightnesses.map(
-        _ => (_.name === kind ? { ..._, value } : _)
+        _ => (_.name === level ? { ..._, value } : _)
       )
     });
   };
@@ -61,42 +58,42 @@ export default class App extends React.PureComponent {
                   onUpdate={this.setSaturation}
                 />
               </section>
-              {Object.keys(this.state.palette).map(color => {
+              {this.state.hues.map(hue => {
                 return (
-                  <div key={color} className={"mt-4"}>
-                    <Label>{color}</Label>
+                  <div key={hue.name} className={"mt-4"}>
+                    <Label>{hue.name}</Label>
                     <HueControl
                       style={{ marginBottom: 42 }}
-                      palette={this.state.palette}
-                      color={color}
+                      name={hue.name}
+                      hue={hue.value}
                       lightness={this.state.lightnesses[1].value}
                       saturation={this.state.saturation}
-                      setPalette={this.setPalette}
+                      setHue={this.setHue}
                       hsl={this.hsl}
                     />
                   </div>
                 );
               })}
             </div>
-            {this.state.lightnesses.map(_ => (
-              <div className={columnClass} key={_.name}>
-                <Label>{_.name}</Label>
+            {this.state.lightnesses.map(lightness => (
+              <div className={columnClass} key={lightness.name}>
+                <Label>{lightness.name}</Label>
                 <LightnessControl
-                  kind={_.name}
+                  kind={lightness.name}
                   className={"mb-4"}
-                  lightness={_.value}
+                  lightness={lightness.value}
                   saturation={this.state.saturation}
                   setLightness={this.setLightness}
                 />
-                {Object.keys(this.state.palette).map(color => (
-                  <div key={color + _.name} className={`${""} mb-4`}>
+                {this.state.hues.map(hue => (
+                  <div key={hue.name + lightness.name} className={`${""} mb-4`}>
                     <div
                       className={`rounded shadow-sm`}
                       style={{
                         height: 64,
                         background: `linear-gradient(to bottom,
-                        ${this.hsl(color, _.name)},
-                        ${this.hsl(color, _.name)})`
+                        ${this.hsl(hue.name, lightness.name)},
+                        ${this.hsl(hue.name, lightness.name)})`
                       }}
                     />
                   </div>
@@ -159,8 +156,8 @@ export default class App extends React.PureComponent {
               </div>
               <Code
                 lightnesses={this.state.lightnesses}
+                hues={this.state.hues}
                 exportType={this.state.exportType}
-                palette={this.state.palette}
                 setExportType={this.setExportType}
                 hsl={this.hsl}
               />
