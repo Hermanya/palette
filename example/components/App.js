@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import * as ColorSliders from "react-color-sliders";
 import { Code } from "./Code";
 import { LightnessControl } from "./LightnessControl";
@@ -148,9 +149,9 @@ export default class App extends React.PureComponent {
                   .filter(_ => _ !== this.props.libraryName)
                   .map((lib, i, xs) => (
                     <span key={lib}>
-                      <a href={`./${lib.toLowerCase().replace(/\s/g, "-")}`}>
+                      <Link href={`/${lib.toLowerCase().replace(/\s/g, "-")}`}>
                         {lib}
-                      </a>
+                      </Link>
                       {i !== xs.length - 1 ? " and " : "."}
                     </span>
                   ))}
