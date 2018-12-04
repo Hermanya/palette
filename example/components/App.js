@@ -6,6 +6,7 @@ import { LightnessControl } from "./LightnessControl";
 import { HueControl } from "./HueControl";
 import { Label } from "./Label";
 import { Herman } from "./Herman";
+
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -55,119 +56,130 @@ export default class App extends React.PureComponent {
             </strong>{" "}
             for your theme
           </h1>
-          <section className="row mb-4">
-            <div className={columnClass}>
-              <section className={""}>
-                <Label>Saturation</Label>
-                <ColorSliders.SaturationSlider
-                  hue={this.state.hues[0].value}
-                  name={"saturation"}
-                  saturation={this.state.saturation}
-                  lightness={
-                    this.state.lightnesses[
-                      Math.floor(this.state.lightnesses.length / 2)
-                    ].value
-                  }
-                  onUpdate={this.setSaturation}
-                />
-              </section>
-              {this.state.hues.map(hue => {
-                return (
-                  <div key={hue.name} className={"mt-4"}>
-                    <Label>{hue.name}</Label>
-                    <HueControl
-                      style={{ marginBottom: 42 }}
-                      name={hue.name}
-                      hue={hue.value}
-                      lightness={
-                        this.state.lightnesses[
-                          Math.floor(this.state.lightnesses.length / 2)
-                        ].value
-                      }
-                      saturation={this.state.saturation}
-                      setHue={this.setHue}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            {this.state.lightnesses.map(lightness => (
-              <div className={columnClass} key={lightness.name}>
-                <Label>{lightness.name}</Label>
-                <LightnessControl
-                  className={"mb-4"}
-                  saturation={this.state.saturation}
-                  setLightness={this.setLightness}
-                  {...lightness}
-                />
-                {this.state.hues.map(hue => (
-                  <div key={hue.name + lightness.name} className={`${""} mb-4`}>
+          <section className="">
+            <div className="row">
+              <div className={columnClass}>
+                <section className={""}>
+                  <Label>Saturation</Label>
+                  <ColorSliders.SaturationSlider
+                    hue={this.state.hues[0].value}
+                    name={"saturation"}
+                    saturation={this.state.saturation}
+                    lightness={
+                      this.state.lightnesses[
+                        Math.floor(this.state.lightnesses.length / 2)
+                      ].value
+                    }
+                    onUpdate={this.setSaturation}
+                  />
+                </section>
+                {this.state.hues.map(hue => {
+                  return (
+                    <div key={hue.name} className={"mt-4"}>
+                      <Label>{hue.name}</Label>
+                      <HueControl
+                        style={{ marginBottom: 42 }}
+                        name={hue.name}
+                        hue={hue.value}
+                        lightness={
+                          this.state.lightnesses[
+                            Math.floor(this.state.lightnesses.length / 2)
+                          ].value
+                        }
+                        saturation={this.state.saturation}
+                        setHue={this.setHue}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              {this.state.lightnesses.map(lightness => (
+                <div className={columnClass} key={lightness.name}>
+                  <Label>{lightness.name}</Label>
+                  <LightnessControl
+                    className={"mb-4"}
+                    saturation={this.state.saturation}
+                    setLightness={this.setLightness}
+                    {...lightness}
+                  />
+                  {this.state.hues.map(hue => (
                     <div
-                      className={`rounded shadow-sm`}
-                      style={{
-                        height: 64,
-                        background: `linear-gradient(to bottom,
+                      key={hue.name + lightness.name}
+                      className={`${""} mb-4`}
+                    >
+                      <div
+                        className={`rounded shadow-sm`}
+                        style={{
+                          height: 64,
+                          background: `linear-gradient(to bottom,
                         ${this.hsl(hue.name, lightness.name)},
                         ${this.hsl(hue.name, lightness.name)})`
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
-            <section className="col-lg-4 col-md-6 col">
-              <h2 className="lead">How this works:</h2>
-              <ol>
-                <li>You adjust the base color per row</li>
-                <li>Change lightness per column</li>
-                <li>
-                  Set color intensity across all colors using the saturation
-                  slider
-                </li>
-                <li>
-                  Export your colors in{" "}
-                  {this.props.exportTypes.map(_ => _.name).join(", ")}
-                </li>
-              </ol>
-              <p className="text-justify">
-                This app is built using React. Source code is available on{" "}
-                <a href="https://github.com/Hermanya/palette/tree/master/example">
-                  GitHub
-                </a>
-                {". "}
-                All sliders used on this page are published on npm as{" "}
-                <var>react-color-sliders</var>,{" "}
-                <a href="https://github.com/Hermanya/palette/blob/master/README.md">
-                  see documentation
-                </a>
-                .
-              </p>
-              <p className="text-justify">
-                In addition to {this.props.libraryName}, I also made similar
-                color tools for{" "}
-                {["Bootstrap", "Tailwind", "Material UI"]
-                  .filter(_ => _ !== this.props.libraryName)
-                  .map((lib, i, xs) => (
-                    <span key={lib}>
-                      <Link href={`/${lib.toLowerCase().replace(/\s/g, "-")}`}>
-                        {lib}
-                      </Link>
-                      {i !== xs.length - 1 ? " and " : "."}
-                    </span>
+                        }}
+                      />
+                    </div>
                   ))}
-              </p>
+                </div>
+              ))}
+            </div>
+            <div className="row">
+              <section className="col mh-100">
+                <Code
+                  lightnesses={this.state.lightnesses}
+                  hues={this.state.hues}
+                  saturation={this.state.saturation}
+                  exportTypes={this.props.exportTypes}
+                  exportType={this.state.exportType}
+                  setExportType={this.setExportType}
+                  hsl={this.hsl}
+                />
+              </section>
+              <section className="col">
+                <h2 className="lead">How this works:</h2>
+                <ol>
+                  <li>You adjust the base color per row</li>
+                  <li>Change lightness per column</li>
+                  <li>
+                    Set color intensity across all colors using the saturation
+                    slider
+                  </li>
+                  <li>
+                    Export your colors in{" "}
+                    {this.props.exportTypes.map(_ => _.name).join(", ")}
+                  </li>
+                </ol>
+                <p className="text-justify">
+                  This app is built using React. Source code is available on{" "}
+                  <a href="https://github.com/Hermanya/palette/tree/master/example">
+                    GitHub
+                  </a>
+                  {". "}
+                  All sliders used on this page are published on npm as{" "}
+                  <var>react-color-sliders</var>,{" "}
+                  <a href="https://github.com/Hermanya/palette/blob/master/README.md">
+                    see documentation
+                  </a>
+                  .
+                </p>
+                <p className="text-justify">
+                  In addition to {this.props.libraryName}, I also made similar
+                  color tools for{" "}
+                  {["Bootstrap", "Tailwind", "Material UI"]
+                    .filter(_ => _ !== this.props.libraryName)
+                    .map((lib, i, xs) => (
+                      <span key={lib}>
+                        <Link
+                          href={`/${lib.toLowerCase().replace(/\s/g, "-")}`}
+                        >
+                          {lib}
+                        </Link>
+                        {i !== xs.length - 1 ? " and " : "."}
+                      </span>
+                    ))}
+                </p>
 
-              <Herman className="mb-4" />
-              <Code
-                lightnesses={this.state.lightnesses}
-                hues={this.state.hues}
-                saturation={this.state.saturation}
-                exportTypes={this.props.exportTypes}
-                exportType={this.state.exportType}
-                setExportType={this.setExportType}
-                hsl={this.hsl}
-              />
-            </section>
+                <Herman className="mb-4" />
+              </section>
+            </div>
           </section>
         </div>
         <i

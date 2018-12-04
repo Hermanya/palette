@@ -4,7 +4,7 @@ import * as ColorSliders from "react-color-sliders";
 export class LightnessControl extends React.PureComponent {
   render() {
     const {
-      name,
+      name = " ",
       value,
       saturation,
       domain,

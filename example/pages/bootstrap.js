@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import "../components/index.scss";
 import App from "../components/App";
+const chroma = require("chroma-js");
 
 const Page = () => (
   <React.Fragment>
@@ -28,28 +29,78 @@ const Page = () => (
           { name: "teal", value: 162 }, // hsl(162°, 73%, 46%)
           { name: "cyan", value: 188 } // hsl(188°, 78%, 41%)
         ],
-        lightnesses: [{ name: "tone", value: 50, domain: [25, 75] }],
+        lightnesses: [
+          "900", // hsl(328°, 81%, 29%)
+          "800",
+          "700",
+          "600",
+          "500",
+          "400",
+          "300",
+          "200",
+          "100" // hsl(339°, 81%, 85%)
+        ].map((name, index, all) => {
+          const value = Math.round(10 + (90 / all.length) * index);
+          return {
+            name,
+            value,
+            domain: [value - 5, value + 5]
+          };
+        }),
         saturation: 80
       }}
       exportTypes={[
-        {
-          name: "SASS",
-          toString: ({ hues, lightnesses, saturation, hsl }) =>
-            hues
-              .map(hue => `$${hue.name}: ${hsl(hue.name, "tone")};`)
-              .join("\n") +
-            `
+        //         {
+        //           name: "SASS",
+        //           toString: ({ hues, lightnesses, saturation, hsl }) =>
+        //             hues
+        //               .map(hue => `$${hue.name}: ${hsl(hue.name, "500")};`)
+        //               .join("\n") +
+        //             `
 
-$primary:       $blue;
-$secondary:     $gray-600;
-$success:       $green;
-$info:          $cyan;
-$warning:       $yellow;
-$danger:        $red;
+        // $primary:       $blue;
+        // $secondary:     $gray-600;
+        // $success:       $green;
+        // $info:          $cyan;
+        // $warning:       $yellow;
+        // $danger:        $red;
+        //             `
+        //         },
+        {
+          name: "CSS",
+          toString: ({ hues, lightnesses, saturation, hsl }) =>
             `
+:root {\n${hues
+              .map(hue =>
+                lightnesses
+                  .map(
+                    lightness =>
+                      console.log(hue, lightness) ||
+                      `  --${hue.name}_${lightness.name}: ${chroma(
+                        hsl(hue.name, lightness.name)
+                      )
+                        .rgb()
+                        .join(", ")}`
+                  )
+                  .concat([
+                    `  --${hue.name}_50: ${chroma(
+                      `hsl(${hue.value}, 100%, 95%)`
+                    )
+                      .rgb()
+                      .join(", ")}`,
+                    `  --${hue.name}_0: ${chroma(
+                      `hsl(${hue.value}, 100%, 100%)`
+                    )
+                      .rgb()
+                      .join(", ")}`
+                  ])
+              )
+              .reduce((a, x) => [...a, ...x])
+              .join(";\n")}\n}
+          `
         }
       ]}
-      columnClass="col-lg-4 col-md-3 col-6"
+      columnClass="col"
     />
   </React.Fragment>
 );

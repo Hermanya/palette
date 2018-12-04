@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import "../components/index.scss";
 import App from "../components/App";
+// const chroma = require("chroma-js");
 
 const Page = () => (
   <React.Fragment>

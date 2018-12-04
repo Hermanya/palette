@@ -17,19 +17,35 @@ const Page = () => (
       libraryColor={"black"}
       initialState={{
         hues: [
-          { name: "red", value: 348 },
-          { name: "orange", value: 30 },
-          { name: "yellow", value: 55 },
-          { name: "green", value: 134 },
-          { name: "cyan", value: 187 },
-          { name: "blue", value: 237 },
-          { name: "magenta", value: 295 }
+          { name: "blue", value: 211 }, // hsl(211°, 100%, 50%)
+          { name: "indigo", value: 253 }, // hsl(263°, 90%, 51%)
+          { name: "purple", value: 271 }, // hsl(261°, 51%, 51%)
+          { name: "pink", value: 332 }, // hsl(332°, 79%, 58%)
+          { name: "red", value: 354 }, // hsl(354°, 70%, 54%)
+          { name: "orange", value: 27 }, // hsl(27°, 98%, 54%)
+          { name: "yellow", value: 45 }, // hsl(45°, 100%, 51%)
+          { name: "green", value: 134 }, // hsl(134°, 61%, 41%)
+          { name: "teal", value: 162 }, // hsl(162°, 73%, 46%)
+          { name: "cyan", value: 188 } // hsl(188°, 78%, 41%)
         ],
         lightnesses: [
-          { name: "shade", value: 25 },
-          { name: "tone", value: 50 },
-          { name: "tint", value: 75 }
-        ],
+          "900", // hsl(328°, 81%, 29%)
+          "800",
+          "700",
+          "600",
+          "500",
+          "400",
+          "300",
+          "200",
+          "100" // hsl(339°, 81%, 85%)
+        ].map((name, index, all) => {
+          const value = Math.round(10 + (90 / all.length) * index);
+          return {
+            name,
+            value,
+            domain: [value - 5, value + 5]
+          };
+        }),
         saturation: 100
       }}
       exportTypes={[
@@ -68,7 +84,7 @@ const Page = () => (
               .join(",\n")}\n}`
         }
       ]}
-      columnClass={"col-lg-2 col-md-3 col-6"}
+      columnClass={"col"}
     />
   </React.Fragment>
 );

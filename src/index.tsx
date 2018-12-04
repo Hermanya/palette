@@ -65,7 +65,10 @@ class HslSlider extends React.Component<HSLProps> {
 
 export class HueSlider extends HslSlider {
   static defaultProps: any = {
-    domain: [0, 360]
+    domain: [0, 360],
+    hue: 0,
+    lightness: 50,
+    saturation: 80
   };
   value = () => this.props.hue || this.props.domain[0];
   background = () => {
